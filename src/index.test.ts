@@ -1,21 +1,5 @@
-export class TimeoutSetter {
-  setTimeoutInSeconds(callback: () => void, seconds: number) {
-    setTimeout(() => {
-      callback();
-    }, seconds * 1000);
-  }
+import { TimeoutSetter } from "./TimeoutSetter";
 
-  setTimeoutInMinutes(callback: () => void, minutes: number) {
-    this.setTimeoutInSeconds(callback, minutes * 60);
-  }
-  setTimeoutInSecondsPromise(callback: () => void, seconds: number) {
-    return new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
-        resolve(callback());
-      }, seconds * 1000);
-    });
-  }
-}
 describe("test TimeoutSetter with ordinary callbacks", () => {
   it("should define class instance", () => {
     expect(new TimeoutSetter()).toBeDefined();
